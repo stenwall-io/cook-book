@@ -85,8 +85,6 @@
 
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
 
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `stenwall-io`, `cook-book`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `Cook Book`, `An easier way of planning meals.`
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
