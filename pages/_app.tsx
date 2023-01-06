@@ -1,4 +1,4 @@
-import '../styles/styles.scss';
+// import '../styles/styles.scss';
 import { ReactNode, useEffect } from 'react';
 import Head from 'next/head';
 import type { AppProps } from 'next/app';
