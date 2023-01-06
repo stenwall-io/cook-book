@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "next lint"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
@@ -19,7 +20,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "swr": "^2.0.0",
-    "typescript": "4.4.4"
+    "typescript": "4.4.4",
+    "vercel": "^28.10.3"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",
@@ -27,6 +29,8 @@
     "@types/react-dom": "^18.0.10",
     "@yarnpkg/plugin-typescript": "^4.0.0-rc.34",
     "@yarnpkg/pnpify": "^4.0.0-rc.34",
-    "@yarnpkg/sdks": "^3.0.0-rc.34"
+    "@yarnpkg/sdks": "^3.0.0-rc.34",
+    "eslint": "8.31.0",
+    "eslint-config-next": "13.1.1"
   }
 }
