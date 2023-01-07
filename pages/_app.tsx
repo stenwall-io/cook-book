@@ -4,19 +4,19 @@ import Head from 'next/head';
 import type { AppProps } from 'next/app';
 import { CssBaseline } from '@mui/material';
 import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
-// import theme from '../styles/theme';
+import theme from '@styles/theme';
 import { SWRConfig } from 'swr';
 
 const fetcher = (query: string) =>
   fetch('/api/graphql', {
     method: 'POST',
     headers: {
-      'Content-type': 'application/json'
+      'Content-type': 'application/json',
     },
-    body: JSON.stringify({ query })
+    body: JSON.stringify({ query }),
   })
-    .then(res => res.json())
-    .then(json => json.data);
+    .then((res) => res.json())
+    .then((json) => json.data);
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   // const getLayout = Component.getLayout || ((page: ReactNode) => page);
@@ -37,7 +37,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
-        {/* <meta name="theme-color" content={theme.palette.primary.main} /> */}
+        <meta name="theme-color" content={theme.palette.primary.main} />
         <link rel="icon" href="/favicon.ico" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -54,15 +54,15 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
         value={{
           // refreshInterval: 3000,
           shouldRetryOnError: true,
-          fetcher
+          fetcher,
         }}
       >
         <StyledEngineProvider injectFirst>
-          {/* <ThemeProvider theme={theme}> */}
-          <CssBaseline />
-          {/* {getLayout(<Component {...pageProps} />)} */}
-          <Component {...pageProps} />
-          {/* </ThemeProvider> */}
+          <ThemeProvider theme={theme}>
+            <CssBaseline />
+            {/* {getLayout(<Component {...pageProps} />)} */}
+            <Component {...pageProps} />
+          </ThemeProvider>
         </StyledEngineProvider>
       </SWRConfig>
     </>

@@ -10,6 +10,7 @@ export default function Index() {
 
   return (
     <div>
+      <h1>Cook Book!</h1>
       {users.map((user: any, i: number) => (
         <div key={i}>{user.name}</div>
       ))}
