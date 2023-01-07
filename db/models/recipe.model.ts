@@ -31,7 +31,7 @@ interface Step {
   text: string;
 }
 
-const HouseSchema = new Schema<HouseDocument>(
+const HouseSchema = new Schema<RecipeDocument>(
   name: {
     type: String,
     required: true,
