@@ -23,7 +23,7 @@ interface RecipeIngredient {
 interface StepGroup {
   title: string;
   order: number;
-  steps: Array<Step>; 
+  steps: Array<Step>;
 }
 
 interface Step {
@@ -31,46 +31,50 @@ interface Step {
   text: string;
 }
 
-const HouseSchema = new Schema<RecipeDocument>(
-  name: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  image_url: { type: String },
-  seasons: [{
-    type: Schema.Types.ObjectId, 
-    ref: 'Season'
-  }],
-  ingredients: [
-    {
-      ingredient: {
-        type: Schema.Types.ObjectId, 
-        ref: 'Ingredient'
-      },
-      unit: {
-        type: Schema.Types.ObjectId, 
-        ref: 'Unit'
-      },
-      amount: number,
-      soak: boolean,
-      boil: boolean
-    }
-  ],
-  steps: [
-    {
-      title: string,
-      order: number,
-      steps: [
-        {
-          order: number,
-          text: string
-        }
-      ]
-    }
-  ],
+const RecipeSchema = new Schema<RecipeDocument>(
   {
-    timestamps: true
+    name: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    image_url: String,
+    seasons: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Season',
+      },
+    ],
+    ingredients: [
+      {
+        ingredient: {
+          type: Schema.Types.ObjectId,
+          ref: 'Ingredient',
+        },
+        unit: {
+          type: Schema.Types.ObjectId,
+          ref: 'Unit',
+        },
+        amount: Number,
+        soak: Boolean,
+        boil: Boolean,
+      },
+    ],
+    steps: [
+      {
+        title: String,
+        order: Number,
+        steps: [
+          {
+            order: Number,
+            text: String,
+          },
+        ],
+      },
+    ],
+  },
+  {
+    timestamps: true,
   }
 );
 

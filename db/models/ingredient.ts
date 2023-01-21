@@ -1,4 +1,4 @@
-import { Schema, Document, model, Types } from 'mongoose';
+import { Schema, Document, model } from 'mongoose';
 import { UnitDocument } from './';
 
 export interface IngredientDocument extends Document {
@@ -6,18 +6,18 @@ export interface IngredientDocument extends Document {
   default_unit_id: UnitDocument['_id'];
 }
 
-const IngredientSchema = new Schema<IngredientDocument>(
+const IngredientSchema = new Schema<IngredientDocument>({
   name: {
     type: String,
     required: true,
     trim: true,
   },
   default_unit_id: {
-    type: Schema.Types.ObjectId, 
+    type: Schema.Types.ObjectId,
     ref: 'Unit',
-    required: true
-  }
-);
+    required: true,
+  },
+});
 
 const Ingredient = model<IngredientDocument>('Ingredient', IngredientSchema);
 

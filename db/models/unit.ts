@@ -5,7 +5,7 @@ export interface UnitDocument extends Document {
   shortname: string;
 }
 
-const UnitSchema = new Schema<UnitDocument>(
+const UnitSchema = new Schema<UnitDocument>({
   name: {
     type: String,
     required: true,
@@ -15,8 +15,8 @@ const UnitSchema = new Schema<UnitDocument>(
     type: String,
     required: true,
     trim: true,
-  }
-);
+  },
+});
 
 const Unit = model<UnitDocument>('Unit', UnitSchema);
 

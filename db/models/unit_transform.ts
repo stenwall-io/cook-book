@@ -1,4 +1,4 @@
-import { Schema, Document, model, Types } from 'mongoose';
+import { Schema, Document, model } from 'mongoose';
 import { IngredientDocument, UnitDocument } from './';
 
 export interface UnitTransformDocument extends Document {
@@ -9,19 +9,21 @@ export interface UnitTransformDocument extends Document {
 }
 
 const UnitTransformSchema = new Schema<UnitTransformDocument>(
-  ingredient_id: {
-    type: Schema.Types.ObjectId,
-    ref: 'Ingredient'
-  },
-  unit_a_id: {
-    type: Schema.Types.ObjectId,
-    ref: 'Unit'
-  },
-  unit_b_id: {
-    type: Schema.Types.ObjectId,
-    ref: 'User'
-  },
-  factor: number
+  {
+    ingredient_id: {
+      type: Schema.Types.ObjectId,
+      ref: 'Ingredient'
+    },
+    unit_a_id: {
+      type: Schema.Types.ObjectId,
+      ref: 'Unit'
+    },
+    unit_b_id: {
+      type: Schema.Types.ObjectId,
+      ref: 'Unit'
+    },
+    factor: Number
+  }
 );
 
 const UnitTransform = model<UnitTransformDocument>('UnitTransform', UnitTransformSchema);

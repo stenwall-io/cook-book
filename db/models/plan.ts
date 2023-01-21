@@ -1,5 +1,5 @@
-import { Schema, Document, model, Types } from 'mongoose';
-import { RecipeDocument } from './';
+import { Schema, Document, model } from 'mongoose';
+import { RecipeDocument } from '@models/index';
 
 export interface PlanDocument extends Document {
   name: string;
@@ -9,28 +9,30 @@ export interface PlanDocument extends Document {
 }
 
 interface PlanRecipe {
-  order: number,
-  recipe: RecipeDocument['_id']
+  order: number;
+  recipe: RecipeDocument['_id'];
 }
 
 const PlanSchema = new Schema<PlanDocument>(
-  name: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  recipes: [
-    {
-      order: number,
-      recipe: {
-        type: Schema.Types.ObjectId, 
-        ref: 'Unit',
-        required: true
-      }
-    }
-  ],
   {
-    timestamps: true
+    name: {
+      type: String,
+      required: true,
+      trim: true,
+    },
+    recipes: [
+      {
+        order: Number,
+        recipe: {
+          type: Schema.Types.ObjectId,
+          ref: 'Recipe',
+          required: true,
+        },
+      },
+    ],
+  },
+  {
+    timestamps: true,
   }
 );
 
