@@ -1,10 +1,11 @@
-import { Schema, Document, model } from 'mongoose';
+import { Schema, model, models } from 'mongoose';
 
-export interface SeasonDocument extends Document {
+export interface ISeason{
+  _id: Schema.Types.ObjectId;
   name: string;
 }
 
-const SeasonSchema = new Schema<SeasonDocument>({
+const SeasonSchema = new Schema<ISeason>({
   name: {
     type: String,
     required: true,
@@ -12,6 +13,4 @@ const SeasonSchema = new Schema<SeasonDocument>({
   },
 });
 
-const Season = model<SeasonDocument>('Season', SeasonSchema);
-
-export default Season;
+export default models.Season || model<ISeason>('Season', SeasonSchema);

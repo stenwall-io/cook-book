@@ -1,12 +1,13 @@
-import { Schema, Document, model } from 'mongoose';
-import { UnitDocument } from './';
+import { Schema, model, models } from 'mongoose';
+import { IUnit } from './';
 
-export interface IngredientDocument extends Document {
+export interface IIngredient {
+  _id: Schema.Types.ObjectId;
   name: string;
-  default_unit_id: UnitDocument['_id'];
+  default_unit_id: IUnit['_id'];
 }
 
-const IngredientSchema = new Schema<IngredientDocument>({
+const IngredientSchema = new Schema<IIngredient>({
   name: {
     type: String,
     required: true,
@@ -19,6 +20,5 @@ const IngredientSchema = new Schema<IngredientDocument>({
   },
 });
 
-const Ingredient = model<IngredientDocument>('Ingredient', IngredientSchema);
+export default models.Ingredient || model<IIngredient>('Ingredient', IngredientSchema);
 
-export default Ingredient;

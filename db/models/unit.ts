@@ -1,11 +1,12 @@
-import { Schema, Document, model, Types } from 'mongoose';
+import { Schema, model, models } from 'mongoose';
 
-export interface UnitDocument extends Document {
+export interface IUnit {
+  _id: Schema.Types.ObjectId;
   name: string;
   shortname: string;
 }
 
-const UnitSchema = new Schema<UnitDocument>({
+const UnitSchema = new Schema<IUnit>({
   name: {
     type: String,
     required: true,
@@ -18,6 +19,4 @@ const UnitSchema = new Schema<UnitDocument>({
   },
 });
 
-const Unit = model<UnitDocument>('Unit', UnitSchema);
-
-export default Unit;
+export default models.Unit || model<IUnit>('Unit', UnitSchema);

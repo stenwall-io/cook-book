@@ -1,14 +1,14 @@
-import { Schema, Document, model } from 'mongoose';
-import { IngredientDocument, UnitDocument } from './';
+import { Schema, model, models } from 'mongoose';
+import { IIngredient, IUnit } from './';
 
-export interface UnitTransformDocument extends Document {
-  ingredient_id: IngredientDocument['_id'];
-  unit_a_id: UnitDocument['_id'];
-  unit_b_id: UnitDocument['_id'];
+export interface IUnitTransform {
+  ingredient_id: IIngredient['_id'];
+  unit_a_id: IUnit['_id'];
+  unit_b_id: IUnit['_id'];
   factor: number;
 }
 
-const UnitTransformSchema = new Schema<UnitTransformDocument>(
+const UnitTransformSchema = new Schema<IUnitTransform>(
   {
     ingredient_id: {
       type: Schema.Types.ObjectId,
@@ -26,6 +26,4 @@ const UnitTransformSchema = new Schema<UnitTransformDocument>(
   }
 );
 
-const UnitTransform = model<UnitTransformDocument>('UnitTransform', UnitTransformSchema);
-
-export default UnitTransform;
+export default models.UnitTransform || model<IUnitTransform>('UnitTransform', UnitTransformSchema);

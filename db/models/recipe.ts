@@ -1,37 +1,38 @@
-import { Schema, Document, model, Types } from 'mongoose';
-import { UnitDocument, SeasonDocument, IngredientDocument } from '.';
+import { Schema, model, models, Types } from 'mongoose';
+import { IUnit, ISeason, IIngredient } from '.';
 
-export interface RecipeDocument extends Document {
+export interface IRecipe {
+  _id: Schema.Types.ObjectId;
   name: string;
   image_url?: string;
   num_portions: number;
-  seasons: Types.Array<SeasonDocument['_id']>;
-  ingredients: Array<RecipeIngredient>;
-  steps: Array<StepGroup>;
+  seasons: Types.Array<ISeason['_id']>;
+  ingredients: Array<IRecipeIngredient>;
+  steps: Array<IStepGroup>;
   createdAt: Date;
   updatedAt: Date;
 }
 
-interface RecipeIngredient {
-  ingredient_id: IngredientDocument['_id'];
-  unit_id: UnitDocument['_id'];
+interface IRecipeIngredient {
+  ingredient_id: IIngredient['_id'];
+  unit_id: IUnit['_id'];
   amount: number;
   soak: boolean;
   boil: boolean;
 }
 
-interface StepGroup {
+interface IStepGroup {
   title: string;
   order: number;
-  steps: Array<Step>;
+  steps: Array<IStep>;
 }
 
-interface Step {
+interface IStep {
   order: number;
   text: string;
 }
 
-const RecipeSchema = new Schema<RecipeDocument>(
+const RecipeSchema = new Schema<IRecipe>(
   {
     name: {
       type: String,
@@ -78,6 +79,4 @@ const RecipeSchema = new Schema<RecipeDocument>(
   }
 );
 
-const Recipe = model<RecipeDocument>('Recipe', RecipeSchema);
-
-export default Recipe;
+export default models.Recipe || model<IRecipe>('Recipe', RecipeSchema);

@@ -1,19 +1,20 @@
-import { Schema, Document, model } from 'mongoose';
-import { RecipeDocument } from '@models/index';
+import { Schema, model, models } from 'mongoose';
+import { IRecipe } from '@models/index';
 
-export interface PlanDocument extends Document {
+export interface IPlan {
+  _id: Schema.Types.ObjectId;
   name: string;
-  recipes: Array<PlanRecipe>;
+  recipes: Array<IPlanRecipe>;
   createdAt: Date;
   updatedAt: Date;
 }
 
-interface PlanRecipe {
+interface IPlanRecipe {
   order: number;
-  recipe: RecipeDocument['_id'];
+  recipe: IRecipe['_id'];
 }
 
-const PlanSchema = new Schema<PlanDocument>(
+const PlanSchema = new Schema<IPlan>(
   {
     name: {
       type: String,
@@ -36,6 +37,4 @@ const PlanSchema = new Schema<PlanDocument>(
   }
 );
 
-const Plan = model<PlanDocument>('Plan', PlanSchema);
-
-export default Plan;
+export default models.Plan || model<IPlan>('Plan', PlanSchema);;
