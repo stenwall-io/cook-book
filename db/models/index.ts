@@ -16,7 +16,7 @@ export default {
   Unit,
 };
 
-export {
+export type {
   IngredientDocument,
   PlanDocument,
   RecipeDocument,
