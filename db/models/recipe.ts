@@ -1,5 +1,5 @@
 import { Schema, Document, model, Types } from 'mongoose';
-import { UnitDocument, SeasonDocument, IngredientDocument } from './';
+import { UnitDocument, SeasonDocument, IngredientDocument } from '.';
 
 export interface RecipeDocument extends Document {
   name: string;
