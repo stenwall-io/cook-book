@@ -1,4 +1,4 @@
-import { Schema, model, models } from 'mongoose';
+import { Schema, Model, model, models } from 'mongoose';
 
 export interface IUnit {
   _id: Schema.Types.ObjectId;
@@ -19,4 +19,4 @@ const UnitSchema = new Schema<IUnit>({
   },
 });
 
-export default models.Unit || model<IUnit>('Unit', UnitSchema);
+export default (models.Unit as Model<IUnit>) || model<IUnit>('Unit', UnitSchema);

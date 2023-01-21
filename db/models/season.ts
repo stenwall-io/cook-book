@@ -1,4 +1,4 @@
-import { Schema, model, models } from 'mongoose';
+import { Schema, Model, model, models } from 'mongoose';
 
 export interface ISeason{
   _id: Schema.Types.ObjectId;
@@ -13,4 +13,4 @@ const SeasonSchema = new Schema<ISeason>({
   },
 });
 
-export default models.Season || model<ISeason>('Season', SeasonSchema);
+export default (models.Season as Model<ISeason>) || model<ISeason>('Season', SeasonSchema);

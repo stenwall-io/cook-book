@@ -1,4 +1,4 @@
-import { Schema, model, models } from 'mongoose';
+import { Schema, Model, model, models } from 'mongoose';
 import { IIngredient, IUnit } from './';
 
 export interface IUnitTransform {
@@ -26,4 +26,4 @@ const UnitTransformSchema = new Schema<IUnitTransform>(
   }
 );
 
-export default models.UnitTransform || model<IUnitTransform>('UnitTransform', UnitTransformSchema);
+export default (models.UnitTransform as Model<IUnitTransform>) || model<IUnitTransform>('UnitTransform', UnitTransformSchema);

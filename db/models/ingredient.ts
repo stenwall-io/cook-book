@@ -1,4 +1,4 @@
-import { Schema, model, models } from 'mongoose';
+import { Schema, Model, model, models } from 'mongoose';
 import { IUnit } from './';
 
 export interface IIngredient {
@@ -20,5 +20,5 @@ const IngredientSchema = new Schema<IIngredient>({
   },
 });
 
-export default models.Ingredient || model<IIngredient>('Ingredient', IngredientSchema);
+export default (models.Ingredient as Model<IIngredient>) || model<IIngredient>('Ingredient', IngredientSchema);
 

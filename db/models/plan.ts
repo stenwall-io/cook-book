@@ -1,4 +1,4 @@
-import { Schema, model, models } from 'mongoose';
+import { Schema, Model, model, models } from 'mongoose';
 import { IRecipe } from '@models/index';
 
 export interface IPlan {
@@ -37,4 +37,4 @@ const PlanSchema = new Schema<IPlan>(
   }
 );
 
-export default models.Plan || model<IPlan>('Plan', PlanSchema);;
+export default (models.Plan as Model<IPlan>) || model<IPlan>('Plan', PlanSchema);;
