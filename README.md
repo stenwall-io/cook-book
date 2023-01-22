@@ -134,9 +134,9 @@ yarn dev
 |---|---|---|
 | POST | `/recipes` | create new recipe |
 | GET | `/recipes` | list all recipes |
-| GET | `/recipes/:recipeId` | get given recipe |
-| PUT | `/recipes/:recipeId` | update given recipe |
-| DELETE | `/recipes/:recipeId` | delete given recipe |
+| GET | `/recipes/[recipeId]` | get given recipe |
+| PUT | `/recipes/[recipeId]` | update given recipe |
+| DELETE | `/recipes/[recipeId]` | delete given recipe |
 
 ### Model URIs for plans
 
@@ -144,10 +144,10 @@ yarn dev
 |---|---|---|
 | POST | `/plans` | create new plan |
 | GET | `/plans` | list all plans |
-| GET | `/plans/:planId` | get given plan |
-| PUT | `/plans/:planId` | update given plan |
-| DELETE | `/plans/:planId` | delete given plan |
-| PUT | `/plans/:planId/recipes/:recipeId` | add recipe to plan |
+| GET | `/plans/[planId]` | get given plan |
+| PUT | `/plans/[planId]` | update given plan |
+| DELETE | `/plans/[planId]` | delete given plan |
+| PUT | `/plans/[planId]/recipes/[recipeId]` | add recipe to plan |
 
 ### Model URIs for ingredients
 
@@ -155,9 +155,9 @@ yarn dev
 |---|---|---|
 | POST | `/ingredients` | create new ingredient |
 | GET | `/ingredients` | list all ingredients |
-| GET | `/ingredients/:ingredientId` | get given ingredient |
-| PUT | `/ingredients/:ingredientId` | update given ingredient |
-| DELETE | `/ingredients/:ingredientId` | delete given ingredient |
+| GET | `/ingredients/[ingredientId]` | get given ingredient |
+| PUT | `/ingredients/[ingredientId]` | update given ingredient |
+| DELETE | `/ingredients/[ingredientId]` | delete given ingredient |
 
 ### Model URIs for tags
 
@@ -165,9 +165,9 @@ yarn dev
 |---|---|---|
 | POST | `/tags` | create new tag |
 | GET | `/tags` | list all tags |
-| GET | `/tags/:tagId` | get given tag |
-| PUT | `/tags/:tagId` | update given tag |
-| DELETE | `/tags/:tagId` | delete given tag |
+| GET | `/tags/[tagId]` | get given tag |
+| PUT | `/tags/[tagId]` | update given tag |
+| DELETE | `/tags/[tagId]` | delete given tag |
 
 
 
