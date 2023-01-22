@@ -6,34 +6,34 @@ let theme = createTheme({
   palette: {
     mode: 'dark',
     primary: {
-      main: '#607a8d',
-      contrastText: '#e4e3dd',
+      main: '#8C6954',
+      contrastText: '#261914',
     },
     secondary: {
-      main: '#EC8F00',
+      main: '#F2B9B3',
       contrastText: '#0E1E29',
     },
     background: {
-      default: '#112531',
-      paper: '#16313f',
+      default: '#f4ded3',
+      paper: '#D9C1B4',
     },
     text: {
-      primary: '#e4e3dd',
+      primary: '#261914',
     },
-    divider: '#395971',
+    divider: '#ffb4ac',
     info: {
-      main: '#2fb373',
+      main: '#F2DFA7',
     },
     success: {
-      main: '#00d589',
+      main: '#abd45f',
     },
     error: {
-      main: '#c54419',
+      main: '#ba1a1a',
     },
   },
   typography: {
     fontFamily: [
-      '"Nunito"',
+      '"Rubik"',
       'Roboto',
       'sans-serif',
       '"Apple Color Emoji"',
@@ -41,39 +41,32 @@ let theme = createTheme({
       '"Segoe UI Symbol"',
     ].join(','),
     h1: {
-      fontFamily: '"Merriweather", serif',
       fontWeight: 700,
-      fontStyle: 'italic',
       fontSize: '3.75rem',
       lineHeight: 1.12,
       letterSpacing: '-0.01562em',
     },
     h2: {
-      fontFamily: '"Merriweather", serif',
-      fontWeight: 700,
-      fontStyle: 'italic',
+      fontWeight: 500,
     },
     h4: {
-      fontFamily: '"Merriweather", serif',
-      fontWeight: 700,
-      fontStyle: 'italic',
+      fontWeight: 500,
     },
     h5: {
-      fontWeight: 700,
+      fontWeight: 500,
       fontSize: '1.5rem',
       lineHeight: 1.35,
       letterSpacing: '0.03em',
     },
     subtitle2: {
-      fontFamily: '"Merriweather", serif',
-      fontWeight: 200,
+      fontWeight: 400,
       fontSize: '0.875rem',
-      fontStyle: 'italic',
+      textTransform: 'uppercase',
       lineHeight: 1.57,
       letterSpacing: '0.00714em',
     },
     body1: {
-      fontWeight: 600,
+      fontWeight: 400,
       fontSize: '1.1rem',
       letterSpacing: '0.01em',
     },
@@ -84,7 +77,8 @@ let theme = createTheme({
       letterSpacing: '0.01em',
     },
     button: {
-      fontWeight: 700,
+      fontWeight: 500,
+      textTransform: 'uppercase',
       fontSize: '1rem',
       letterSpacing: '0.03em',
     },

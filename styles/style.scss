@@ -1,0 +1,65 @@
+// PALETTE
+$primary_main: #8C6954;
+$primary_contrast-text: #321300;
+
+$secondary_main: #F2B9B3;
+$secondary_contrast-text: #410002;
+
+$background_default: #f4ded3;
+$background_paper: #D9C1B4;
+
+$text_primary: #261914;
+
+$divider: #ffb4ac;
+
+$info_main: #F2DFA7;
+
+$success_main: #abd45f;
+
+$error_main: #ba1a1a;
+
+// TYPOGRAPHY
+$typography_font-family: 'Rubik', Roboto, sans-serif, 'Apple Color Emoji',
+  'Segoe UI Emoji', 'Segoe UI Symbol';
+@mixin h1 {
+  font-weight: 700;
+  font-size: 3.75rem;
+  line-height: 1.12;
+  letter-spacing: -0.01562em;
+}
+@mixin h2 {
+  font-weight: 500;
+}
+@mixin h4 {
+  font-weight: 500;
+}
+@mixin h5 {
+  font-weight: 500;
+  font-size: 1.5rem;
+  line-height: 1.35;
+  letter-spacing: 0.03em;
+}
+@mixin subtitle2 {
+  font-weight: 400;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  line-height: 1.57;
+  letter-spacing: 0.00714em;
+}
+@mixin body1 {
+  font-weight: 400;
+  font-size: 1.1rem;
+  letter-spacing: 0.01em;
+}
+@mixin body2 {
+  font-weight: 300;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+}
+@mixin button {
+  font-weight: 500;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
