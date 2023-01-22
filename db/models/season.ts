@@ -1,6 +1,6 @@
 import { Schema, Model, model, models } from 'mongoose';
 
-export interface ISeason{
+export interface ISeason {
   _id: Schema.Types.ObjectId;
   name: string;
 }
@@ -13,4 +13,5 @@ const SeasonSchema = new Schema<ISeason>({
   },
 });
 
-export default (models.Season as Model<ISeason>) || model<ISeason>('Season', SeasonSchema);
+export default (models.Season as Model<ISeason>) ||
+  model<ISeason>('Season', SeasonSchema);

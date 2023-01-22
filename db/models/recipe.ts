@@ -1,5 +1,5 @@
 import { Schema, Model, model, models, Types } from 'mongoose';
-import { IUnit, ISeason, IIngredient } from '.';
+import { IUnit, ISeason, IIngredient } from '@models/index';
 
 export interface IRecipe {
   _id: Schema.Types.ObjectId;
@@ -79,4 +79,5 @@ const RecipeSchema = new Schema<IRecipe>(
   }
 );
 
-export default (models.Recipe as Model<IRecipe>) || model<IRecipe>('Recipe', RecipeSchema);
+export default (models.Recipe as Model<IRecipe>) ||
+  model<IRecipe>('Recipe', RecipeSchema);

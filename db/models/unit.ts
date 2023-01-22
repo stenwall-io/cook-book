@@ -19,4 +19,5 @@ const UnitSchema = new Schema<IUnit>({
   },
 });
 
-export default (models.Unit as Model<IUnit>) || model<IUnit>('Unit', UnitSchema);
+export default (models.Unit as Model<IUnit>) ||
+  model<IUnit>('Unit', UnitSchema);

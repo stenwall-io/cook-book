@@ -37,4 +37,5 @@ const PlanSchema = new Schema<IPlan>(
   }
 );
 
-export default (models.Plan as Model<IPlan>) || model<IPlan>('Plan', PlanSchema);;
+export default (models.Plan as Model<IPlan>) ||
+  model<IPlan>('Plan', PlanSchema);
