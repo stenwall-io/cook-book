@@ -28,6 +28,7 @@ async function dbConnect() {
     }
 
     cached.promise = mongoose.connect(process.env.MONGODB_URI, opts).then((mongoose) => {
+      console.log("Connected to database")
       return mongoose
     })
   }
@@ -39,15 +40,7 @@ async function dbConnect() {
     throw e
   }
 
-  initial();
-  console.log('TUTA');
   return cached.conn
-}
-
-const initial = async () => {
-  await models.Recipe.create({
-    name: 'Testrecept',    
-  });
 }
 
 export default dbConnect
