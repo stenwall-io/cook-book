@@ -1,5 +1,5 @@
 import { Schema, Model, model, models } from 'mongoose';
-import { IIngredient, IUnit } from '@models/index';
+import { IIngredient, IUnit } from './';
 
 export interface IUnitTransform {
   ingredient_id: IIngredient['_id'];
@@ -8,21 +8,22 @@ export interface IUnitTransform {
   factor: number;
 }
 
-const UnitTransformSchema = new Schema<IUnitTransform>({
-  ingredient_id: {
-    type: Schema.Types.ObjectId,
-    ref: 'Ingredient',
-  },
-  unit_a_id: {
-    type: Schema.Types.ObjectId,
-    ref: 'Unit',
-  },
-  unit_b_id: {
-    type: Schema.Types.ObjectId,
-    ref: 'Unit',
-  },
-  factor: Number,
-});
+const UnitTransformSchema = new Schema<IUnitTransform>(
+  {
+    ingredient_id: {
+      type: Schema.Types.ObjectId,
+      ref: 'Ingredient'
+    },
+    unit_a_id: {
+      type: Schema.Types.ObjectId,
+      ref: 'Unit'
+    },
+    unit_b_id: {
+      type: Schema.Types.ObjectId,
+      ref: 'Unit'
+    },
+    factor: Number
+  }
+);
 
-export default (models.UnitTransform as Model<IUnitTransform>) ||
-  model<IUnitTransform>('UnitTransform', UnitTransformSchema);
+export default (models.UnitTransform as Model<IUnitTransform>) || model<IUnitTransform>('UnitTransform', UnitTransformSchema);
