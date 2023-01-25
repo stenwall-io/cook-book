@@ -90,14 +90,10 @@
 
 ### Built With
 
-* [![Next][Next.js]][Next-url]
-<!-- * [![React][React.js]][React-url] -->
-<!-- * [![Vue][Vue.js]][Vue-url] -->
-<!-- * [![Angular][Angular.io]][Angular-url] -->
-<!-- * [![Svelte][Svelte.dev]][Svelte-url] -->
-<!-- * [![Laravel][Laravel.com]][Laravel-url] -->
-<!-- * [![Bootstrap][Bootstrap.com]][Bootstrap-url] -->
-<!-- * [![JQuery][JQuery.com]][JQuery-url] -->
+<!-- * [![Next][Next.js]][Next-url] -->
+* [Next.js][Next-url]
+* [mongoose][mongoose-url]
+* [Material UI][materialui-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -109,10 +105,69 @@
 
 ### Prerequisites
 
+* [Node](https://nodejs.org/en/) version 18.13.0
+* [Yarn](https://yarnpkg.com/) version 3.1.0
+
 ### Installation
+
+Install dependencies
+
+```bash
+yarn install
+```
+
+Run develop environment
+
+```bash
+yarn dev
+```
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- API ENDPOINTS -->
+## API endpoints
+
+### Model URIs for recipes
+
+| Methods | URLs | Actions |
+|---|---|---|
+| POST | `/recipes` | create new recipe |
+| GET | `/recipes` | list all recipes |
+| GET | `/recipes/[recipeId]` | get given recipe |
+| PUT | `/recipes/[recipeId]` | update given recipe |
+| DELETE | `/recipes/[recipeId]` | delete given recipe |
+
+### Model URIs for plans
+
+| Methods | URLs | Actions |
+|---|---|---|
+| POST | `/plans` | create new plan |
+| GET | `/plans` | list all plans |
+| GET | `/plans/[planId]` | get given plan |
+| PUT | `/plans/[planId]` | update given plan |
+| DELETE | `/plans/[planId]` | delete given plan |
+| PUT | `/plans/[planId]/recipes/[recipeId]` | add recipe to plan |
+
+### Model URIs for ingredients
+
+| Methods | URLs | Actions |
+|---|---|---|
+| POST | `/ingredients` | create new ingredient |
+| GET | `/ingredients` | list all ingredients |
+| GET | `/ingredients/[ingredientId]` | get given ingredient |
+| PUT | `/ingredients/[ingredientId]` | update given ingredient |
+| DELETE | `/ingredients/[ingredientId]` | delete given ingredient |
+
+### Model URIs for tags
+
+| Methods | URLs | Actions |
+|---|---|---|
+| POST | `/tags` | create new tag |
+| GET | `/tags` | list all tags |
+| GET | `/tags/[tagId]` | get given tag |
+| PUT | `/tags/[tagId]` | update given tag |
+| DELETE | `/tags/[tagId]` | delete given tag |
 
 
 
@@ -200,7 +255,6 @@ Project Link: [https://github.com/stenwall-io/cook-book](https://github.com/sten
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [product-screenshot]: assets/screenshot.png
-[Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
-[Next-url]: https://nextjs.org/
-[React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
-[React-url]: https://reactjs.org/
+[next-url]: https://nextjs.org/
+[mongoose-url]: https://mongoosejs.com/
+[materialui-url]: https://mui.com/
