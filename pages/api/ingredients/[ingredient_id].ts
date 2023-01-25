@@ -9,7 +9,7 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const {
-    query: { id },
+    query: { id: ingredient_id },
     method,
   } = req;
 
@@ -18,9 +18,9 @@ export default async function handler(
   switch (method) {
     case 'GET':
       try {
-        const data = await Ingredient.findById(id);
+        const data = await Ingredient.findById(ingredient_id);
         if (!data) {
-          return res.status(400).json({ error: `Ingredient ${id} not found` });
+          return res.status(400).json({ error: `Ingredient not found` });
         }
         res.status(200).json({ data: data });
       } catch (err: any) {
@@ -30,12 +30,16 @@ export default async function handler(
 
     case 'PUT':
       try {
-        const data = await Ingredient.findByIdAndUpdate(id, req.body, {
-          new: true,
-          runValidators: true,
-        });
+        const data = await Ingredient.findByIdAndUpdate(
+          ingredient_id,
+          req.body,
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
         if (!data) {
-          return res.status(400).json({ error: `Ingredient ${id} not found` });
+          return res.status(400).json({ error: `Ingredient not found` });
         }
         res.status(200).json({ data: data });
       } catch (err: any) {
@@ -45,9 +49,9 @@ export default async function handler(
 
     case 'DELETE':
       try {
-        const deleted = await Ingredient.deleteOne({ _id: id });
+        const deleted = await Ingredient.deleteOne({ _id: ingredient_id });
         if (!deleted) {
-          return res.status(400).json({ error: `Ingredient ${id} not found` });
+          return res.status(400).json({ error: `Ingredient not found` });
         }
         res.status(200).json({ data: {} });
       } catch (err: any) {

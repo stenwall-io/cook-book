@@ -1,15 +1,16 @@
 import { NextApiRequest, NextApiResponse } from 'next';
+
 import dbConnect from 'db/config/index';
 import models from '@models/index';
 
-const Recipe = models.Recipe;
+const Tag = models.Tag;
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   const {
-    query: { id },
+    query: { id: tag_id },
     method,
   } = req;
 
@@ -18,9 +19,9 @@ export default async function handler(
   switch (method) {
     case 'GET':
       try {
-        const data = await Recipe.findById(id);
+        const data = await Tag.findById(tag_id);
         if (!data) {
-          return res.status(400).json({ error: `Recipe ${id} not found` });
+          return res.status(400).json({ error: `Tag not found` });
         }
         res.status(200).json({ data: data });
       } catch (err: any) {
@@ -30,12 +31,12 @@ export default async function handler(
 
     case 'PUT':
       try {
-        const data = await Recipe.findByIdAndUpdate(id, req.body, {
+        const data = await Tag.findByIdAndUpdate(tag_id, req.body, {
           new: true,
           runValidators: true,
         });
         if (!data) {
-          return res.status(400).json({ error: `Recipe ${id} not found` });
+          return res.status(400).json({ error: `Tag not found` });
         }
         res.status(200).json({ data: data });
       } catch (err: any) {
@@ -45,9 +46,9 @@ export default async function handler(
 
     case 'DELETE':
       try {
-        const deleted = await Recipe.deleteOne({ _id: id });
+        const deleted = await Tag.deleteOne({ _id: tag_id });
         if (!deleted) {
-          return res.status(400).json({ error: `Recipe ${id} not found` });
+          return res.status(400).json({ error: `Tag not found` });
         }
         res.status(200).json({ data: {} });
       } catch (err: any) {

@@ -1,16 +1,15 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-
 import dbConnect from 'db/config/index';
 import models from '@models/index';
 
-const Tag = models.Tag;
+const Plan = models.Plan;
 
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
 ) {
   const {
-    query: { id },
+    query: { plan_id },
     method,
   } = req;
 
@@ -19,9 +18,9 @@ export default async function handler(
   switch (method) {
     case 'GET':
       try {
-        const data = await Tag.findById(id);
+        const data = await Plan.findById(plan_id);
         if (!data) {
-          return res.status(400).json({ error: `Tag ${id} not found` });
+          return res.status(400).json({ error: `Plan not found` });
         }
         res.status(200).json({ data: data });
       } catch (err: any) {
@@ -31,12 +30,12 @@ export default async function handler(
 
     case 'PUT':
       try {
-        const data = await Tag.findByIdAndUpdate(id, req.body, {
+        const data = await Plan.findByIdAndUpdate(plan_id, req.body, {
           new: true,
           runValidators: true,
         });
         if (!data) {
-          return res.status(400).json({ error: `Tag ${id} not found` });
+          return res.status(400).json({ error: `Plan not found` });
         }
         res.status(200).json({ data: data });
       } catch (err: any) {
@@ -46,9 +45,9 @@ export default async function handler(
 
     case 'DELETE':
       try {
-        const deleted = await Tag.deleteOne({ _id: id });
+        const deleted = await Plan.deleteOne({ _id: plan_id });
         if (!deleted) {
-          return res.status(400).json({ error: `Tag ${id} not found` });
+          return res.status(400).json({ error: `Plan not found` });
         }
         res.status(200).json({ data: {} });
       } catch (err: any) {
