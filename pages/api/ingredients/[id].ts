@@ -1,17 +1,19 @@
-import { NextApiRequest, NextApiResponse } from 'next'
-
-import dbConnect from "db/config/index"
-import models from "@models/index";
+import { NextApiRequest, NextApiResponse } from 'next';
+import dbConnect from 'db/config/index';
+import models from '@models/index';
 
 const Ingredient = models.Ingredient;
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    const {
-        query: { id },
-        method,
-    } = req
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse
+) {
+  const {
+    query: { id },
+    method,
+  } = req;
 
-    await dbConnect()
+  await dbConnect();
 
   switch (method) {
     case 'GET':
@@ -22,38 +24,38 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         }
         res.status(200).json({ data: data });
       } catch (err: any) {
-        res.status(500).json({ error: err.message});
+        res.status(500).json({ error: err.message });
       }
-      break
+      break;
 
     case 'PUT':
       try {
         const data = await Ingredient.findByIdAndUpdate(id, req.body, {
           new: true,
           runValidators: true,
-        })
+        });
         if (!data) {
-          return res.status(400).json({ error: `Ingredient ${id} not found` })
+          return res.status(400).json({ error: `Ingredient ${id} not found` });
         }
-        res.status(200).json({ data: data })
+        res.status(200).json({ data: data });
       } catch (err: any) {
-        res.status(500).json({ error: err.message})
+        res.status(500).json({ error: err.message });
       }
-      break
+      break;
 
     case 'DELETE':
       try {
-        const deleted = await Ingredient.deleteOne({ _id: id })
+        const deleted = await Ingredient.deleteOne({ _id: id });
         if (!deleted) {
-          return res.status(400).json({ error: `Ingredient ${id} not found` })
+          return res.status(400).json({ error: `Ingredient ${id} not found` });
         }
-        res.status(200).json({ data: {} })
+        res.status(200).json({ data: {} });
       } catch (err: any) {
-        res.status(500).json({ error: err.message})
+        res.status(500).json({ error: err.message });
       }
-      break
+      break;
     default:
-        res.setHeader('Allow', ['GET', 'DELETE', 'PUT'])
-        res.status(405).end(`Method ${method} Not Allowed`)
-    }
+      res.setHeader('Allow', ['GET', 'DELETE', 'PUT']);
+      res.status(405).end(`Method ${method} Not Allowed`);
+  }
 }
