@@ -1,5 +1,5 @@
 import { Schema, Model, model, models, Types } from 'mongoose';
-import { IUnit, ISeason, IIngredient } from '@models/index';
+import { IUnit, ISeason, ITag, IIngredient } from '@models/index';
 
 export interface IRecipe {
   _id: Schema.Types.ObjectId;
@@ -9,6 +9,7 @@ export interface IRecipe {
   seasons: Types.Array<ISeason['_id']>;
   ingredients: Array<IRecipeIngredient>;
   steps: Array<IStepGroup>;
+  tags: Types.Array<ITag['_id']>;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -71,6 +72,12 @@ const RecipeSchema = new Schema<IRecipe>(
             text: String,
           },
         ],
+      },
+    ],
+    tags: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Tag',
       },
     ],
   },
