@@ -12,6 +12,7 @@ const TagSchema = new Schema<ITag>({
     type: String,
     required: true,
     trim: true,
+    lowercase: true
   },
 });
 
