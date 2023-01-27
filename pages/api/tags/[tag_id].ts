@@ -1,5 +1,4 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-
 import dbConnect from 'db/config/index';
 import models from '@models/index';
 

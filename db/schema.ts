@@ -1,4 +1,4 @@
-export default const typeDefs = `type Recipe{
+export const typeDefs = `type Recipe{
 	id: ID!
 	name: String!
 	image_url: String
