@@ -9,9 +9,10 @@ export default function Index() {
   return (
     <div>
       <h1>Cook Book!</h1>
-      {recipes.map((recipe: any, i: number) => (
-        <div key={i}>{recipe.name}</div>
-      ))}
+      {recipes &&
+        recipes.map((recipe: any, i: number) => (
+          <div key={recipe._id}>{recipe.name}</div>
+        ))}
     </div>
   );
 }
