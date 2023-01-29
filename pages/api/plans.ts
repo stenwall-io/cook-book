@@ -4,33 +4,50 @@ import models from '@models/index';
 
 const Plan = models.Plan;
 
-export default async function handler(
+export const planHandler = async (
   req: NextApiRequest,
   res: NextApiResponse
-) {
+) => {
   const { method } = req;
 
   await dbConnect();
 
   switch (method) {
+    // create new plan
+    case 'POST':
+      if (!req.body) {
+        return res.status(400).json({ message: 'Cannot be empty.' });
+      }
+      try {
+        const plan = await Plan.create(req.body);
+        return res
+          .status(201)
+          .json({ message: 'Plan created successfully.', plan });
+      } catch (err: any) {
+        return res.status(500).json({
+          message: 'Error saving plan to database.',
+          error: err.message,
+        });
+      }
+    // get all plans
     case 'GET':
       try {
-        const data = await Plan.find({});
-        res.status(200).json({ data: data });
+        const plans = await Plan.find({});
+        if (!plans) {
+          return res.status(404).send({
+            message: 'No plans were found.',
+          });
+        }
+        return res.status(200).json({ plans });
       } catch (err: any) {
-        res.status(500).json({ error: err.message });
+        return res
+          .status(500)
+          .json({ message: 'Error retrieving plans', error: err.message });
       }
-      break;
-    case 'POST':
-      try {
-        const data = await Plan.create(req.body);
-        res.status(201).json({ data: data });
-      } catch (err: any) {
-        res.status(500).json({ error: err.message });
-      }
-      break;
     default:
       res.setHeader('Allow', ['GET', 'POST']);
       res.status(405).end(`Method ${method} Not Allowed`);
   }
-}
+};
+
+export default planHandler;

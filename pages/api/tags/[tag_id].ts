@@ -16,44 +16,64 @@ export default async function handler(
   await dbConnect();
 
   switch (method) {
+    // get tag by id
     case 'GET':
       try {
-        const data = await Tag.findById(tag_id);
-        if (!data) {
-          return res.status(400).json({ error: `Tag not found` });
+        const tag = await Tag.findById(tag_id);
+        if (!tag) {
+          return res
+            .status(400)
+            .json({ error: `Tag with id: ${tag_id}not found` });
         }
-        res.status(200).json({ data: data });
+        return res.status(200).json({ tag });
       } catch (err: any) {
-        res.status(500).json({ error: err.message });
+        return res.status(500).json({
+          message: `Error retrieving tag with id: ${tag_id}.`,
+          error: err.message,
+        });
       }
-      break;
-
+    // update tag by id
     case 'PUT':
+      if (!req.body) {
+        return res.status(400).send({
+          message: 'Data to update cannot be empty.',
+        });
+      }
       try {
-        const data = await Tag.findByIdAndUpdate(tag_id, req.body, {
+        const tag = await Tag.findByIdAndUpdate({ _id: tag_id }, req.body, {
           new: true,
           runValidators: true,
         });
-        if (!data) {
-          return res.status(400).json({ error: `Tag not found` });
+        if (!tag) {
+          return res.status(400).json({
+            error: `Cannot update tag with id: ${tag_id}, maybe it was not found.`,
+          });
         }
-        res.status(200).json({ data: data });
+        return res
+          .status(200)
+          .json({ message: 'Tag updated successfully.', tag });
       } catch (err: any) {
-        res.status(500).json({ error: err.message });
+        return res.status(500).json({
+          message: `Error updating tag with id: ${tag_id}.`,
+          error: err.message,
+        });
       }
-      break;
-
+    // delete tag by id
     case 'DELETE':
       try {
-        const deleted = await Tag.deleteOne({ _id: tag_id });
-        if (!deleted) {
-          return res.status(400).json({ error: `Tag not found` });
+        const tag = await Tag.deleteOne({ _id: tag_id });
+        if (!tag) {
+          return res.status(400).json({
+            error: `Cannot delete tag with id: ${tag_id}, maybe it was not found.`,
+          });
         }
-        res.status(200).json({ data: {} });
+        return res.status(200).json({ message: 'Tag deleted successfully.' });
       } catch (err: any) {
-        res.status(500).json({ error: err.message });
+        return res.status(500).json({
+          message: `Error deleting tag with id: ${tag_id}.`,
+          error: err.message,
+        });
       }
-      break;
     default:
       res.setHeader('Allow', ['GET', 'DELETE', 'PUT']);
       res.status(405).end(`Method ${method} Not Allowed`);

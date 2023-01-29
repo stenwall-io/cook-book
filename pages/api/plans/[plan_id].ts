@@ -4,10 +4,10 @@ import models from '@models/index';
 
 const Plan = models.Plan;
 
-export default async function handler(
+export const planHandler = async (
   req: NextApiRequest,
   res: NextApiResponse
-) {
+) => {
   const {
     query: { plan_id },
     method,
@@ -16,46 +16,68 @@ export default async function handler(
   await dbConnect();
 
   switch (method) {
+    // get plan by id
     case 'GET':
       try {
-        const data = await Plan.findById(plan_id);
-        if (!data) {
-          return res.status(400).json({ error: `Plan not found` });
+        const plan = await Plan.findById(plan_id);
+        if (!plan) {
+          return res
+            .status(404)
+            .json({ error: `Plan with id: ${plan_id} not found` });
         }
-        res.status(200).json({ data: data });
+        return res.status(200).json({ plan });
       } catch (err: any) {
-        res.status(500).json({ error: err.message });
+        return res.status(500).json({
+          message: `Error retrieving plan with id: ${plan_id}.`,
+          error: err.message,
+        });
       }
-      break;
-
+    // update plan by id
     case 'PUT':
+      if (!req.body) {
+        return res.status(400).send({
+          message: 'Data to update cannot be empty.',
+        });
+      }
       try {
-        const data = await Plan.findByIdAndUpdate(plan_id, req.body, {
+        const plan = await Plan.findByIdAndUpdate({ _id: plan_id }, req.body, {
           new: true,
           runValidators: true,
         });
-        if (!data) {
-          return res.status(400).json({ error: `Plan not found` });
+        if (!plan) {
+          return res.status(400).json({
+            error: `Cannot update plan with id: ${plan_id}, maybe it was not found.`,
+          });
         }
-        res.status(200).json({ data: data });
+        return res
+          .status(200)
+          .json({ message: 'Post updated successfully.', plan });
       } catch (err: any) {
-        res.status(500).json({ error: err.message });
+        return res.status(500).json({
+          message: `Error updating plan with id: ${plan_id}.`,
+          error: err.message,
+        });
       }
-      break;
-
     case 'DELETE':
+      // delete plan by id
       try {
-        const deleted = await Plan.deleteOne({ _id: plan_id });
-        if (!deleted) {
-          return res.status(400).json({ error: `Plan not found` });
+        const plan = await Plan.deleteOne({ _id: plan_id });
+        if (!plan) {
+          return res.status(404).json({
+            error: `Cannot delete plan with id: ${plan_id}, maybe it was not found.`,
+          });
         }
-        res.status(200).json({ data: {} });
+        return res.status(200).json({ message: 'Plan deleted successfully.' });
       } catch (err: any) {
-        res.status(500).json({ error: err.message });
+        return res.status(500).json({
+          message: `Error deleting plan with id: ${plan_id}.`,
+          error: err.message,
+        });
       }
-      break;
     default:
       res.setHeader('Allow', ['GET', 'DELETE', 'PUT']);
       res.status(405).end(`Method ${method} Not Allowed`);
   }
-}
+};
+
+export default planHandler;

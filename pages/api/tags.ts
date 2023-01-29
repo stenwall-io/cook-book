@@ -13,22 +13,37 @@ export default async function handler(
   await dbConnect();
 
   switch (method) {
+    // create new tag
+    case 'POST':
+      if (!req.body) {
+        return res.status(400).json({ message: 'Cannot be empty.' });
+      }
+      try {
+        const tag = await Tag.create(req.body);
+        return res
+          .status(201)
+          .json({ message: 'Tag created successfully.', tag });
+      } catch (err: any) {
+        return res.status(500).json({
+          message: 'Error saving tag to database.',
+          error: err.message,
+        });
+      }
+    // get all tags
     case 'GET':
       try {
-        const data = await Tag.find({});
-        res.status(200).json({ data: data });
+        const tags = await Tag.find({});
+        if (!tags) {
+          return res.status(404).send({
+            message: 'No tags were found.',
+          });
+        }
+        return res.status(200).json({ tags });
       } catch (err: any) {
-        res.status(500).json({ error: err.message });
+        return res
+          .status(500)
+          .json({ message: 'Error retrieving tags', error: err.message });
       }
-      break;
-    case 'POST':
-      try {
-        const data = await Tag.create(req.body);
-        res.status(201).json({ data: data });
-      } catch (err: any) {
-        res.status(500).json({ error: err.message });
-      }
-      break;
     default:
       res.setHeader('Allow', ['GET', 'POST']);
       res.status(405).end(`Method ${method} Not Allowed`);
