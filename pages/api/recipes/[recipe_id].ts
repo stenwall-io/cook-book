@@ -4,10 +4,10 @@ import models from '@models/index';
 
 const Recipe = models.Recipe;
 
-export default async function handler(
+export const recipeHandler = async (
   req: NextApiRequest,
   res: NextApiResponse
-) {
+) => {
   const {
     query: { recipe_id },
     method,
@@ -84,4 +84,6 @@ export default async function handler(
       res.setHeader('Allow', ['GET', 'DELETE', 'PUT']);
       res.status(405).end(`Method ${method} Not Allowed`);
   }
-}
+};
+
+export default recipeHandler;

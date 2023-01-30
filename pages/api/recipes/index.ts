@@ -4,10 +4,10 @@ import models from '@models/index';
 
 const Recipe = models.Recipe;
 
-export default async function handler(
+export const recipeHandler = async (
   req: NextApiRequest,
   res: NextApiResponse
-) {
+) => {
   const { method } = req;
 
   await dbConnect();
@@ -32,12 +32,13 @@ export default async function handler(
     // get all recipes
     case 'GET':
       try {
-        const recipes = await Recipe.find({});
+        const recipes = await Recipe.find({}).select(['name', 'image_url']);
         if (!recipes) {
           return res.status(404).send({
             message: 'No recipes were found.',
           });
         }
+
         return res.status(200).json({ recipes });
       } catch (err: any) {
         return res
@@ -48,4 +49,6 @@ export default async function handler(
       res.setHeader('Allow', ['GET', 'POST']);
       res.status(405).end(`Method ${method} Not Allowed`);
   }
-}
+};
+
+export default recipeHandler;

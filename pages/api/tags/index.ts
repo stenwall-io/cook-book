@@ -4,10 +4,7 @@ import models from '@models/index';
 
 const Tag = models.Tag;
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export const tagHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   const { method } = req;
 
   await dbConnect();
@@ -48,4 +45,6 @@ export default async function handler(
       res.setHeader('Allow', ['GET', 'POST']);
       res.status(405).end(`Method ${method} Not Allowed`);
   }
-}
+};
+
+export default tagHandler;

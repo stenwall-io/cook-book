@@ -4,10 +4,7 @@ import models from '@models/index';
 
 const Tag = models.Tag;
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export const tagHandler = async (req: NextApiRequest, res: NextApiResponse) => {
   const {
     query: { id: tag_id },
     method,
@@ -78,4 +75,6 @@ export default async function handler(
       res.setHeader('Allow', ['GET', 'DELETE', 'PUT']);
       res.status(405).end(`Method ${method} Not Allowed`);
   }
-}
+};
+
+export default tagHandler;
