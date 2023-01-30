@@ -10,7 +10,7 @@ import { SWRConfig } from 'swr';
 const fetcher = (query: string) =>
   fetch(query)
     .then((res) => res.json())
-    .then((json) => json.data);
+    .then((json) => json);
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   // const getLayout = Component.getLayout || ((page: ReactNode) => page);

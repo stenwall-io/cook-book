@@ -1,5 +1,5 @@
 import { Schema, Model, model, models } from 'mongoose';
-import { IIngredient, IUnit } from '@models/index';
+import { IIngredient, IUnit } from './';
 
 export interface IUnitTransform {
   ingredient_id: IIngredient['_id'];

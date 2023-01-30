@@ -3,6 +3,7 @@ import { Schema, Model, model, models } from 'mongoose';
 export interface IUnit {
   _id: Schema.Types.ObjectId;
   name: string;
+  plural: string;
   shortname: string;
 }
 
@@ -14,7 +15,10 @@ const UnitSchema = new Schema<IUnit>({
   },
   shortname: {
     type: String,
-    required: true,
+    trim: true,
+  },
+  plural: {
+    type: String,
     trim: true,
   },
 });
