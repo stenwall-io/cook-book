@@ -6,7 +6,8 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "seed": "ts-node -r tsconfig-paths/register db/seeders/index.ts"
   },
   "dependencies": {
     "@emotion/react": "^11.10.5",
@@ -36,7 +37,8 @@
     "@yarnpkg/sdks": "^3.0.0-rc.34",
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
-    "eslint-config-prettier": "^8.6.0"
+    "eslint-config-prettier": "^8.6.0",
+    "ts-node": "^10.9.1"
   },
   "packageManager": "yarn@3.1.0"
 }

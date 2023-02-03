@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": ["dom", "dom.iterable", "esnext"],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "baseUrl": "./",
     "allowJs": true,
     "skipLibCheck": true,
@@ -17,12 +21,52 @@
     "jsx": "preserve",
     "incremental": true,
     "paths": {
-      "@models/*": ["db/models/*"],
-      "@components/*": ["components/*"],
-      "@styles/*": ["styles/*"],
-      "@services/*": ["db/services/*"]
+      "@models/*": [
+        "db/models/*"
+      ],
+      "@components/*": [
+        "components/*"
+      ],
+      "@styles/*": [
+        "styles/*"
+      ],
+      "@seeders/*": [
+        "db/seeders/*"
+      ],
+      "@services/*": [
+        "db/services/*"
+      ]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "ts-node": {
+    "transpileOnly": true,
+    "compilerOptions": {
+      "module": "CommonJS",
+      "paths": {
+        "@models/*": [
+          "db/models/*"
+        ],
+        "@components/*": [
+          "components/*"
+        ],
+        "@styles/*": [
+          "styles/*"
+        ],
+        "@seeders/*": [
+          "db/seeders/*"
+        ],
+        "@services/*": [
+          "db/services/*"
+        ]
+      }
+    }
+  }
 }

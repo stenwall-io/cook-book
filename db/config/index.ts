@@ -1,8 +1,4 @@
-import { config } from 'dotenv';
 import mongoose from 'mongoose';
-import models from '@models/index';
-
-config();
 
 const options: object = {
   useNewUrlParser: true,
@@ -26,10 +22,14 @@ async function dbConnect() {
     };
 
     cached.promise = mongoose
-      .connect(process.env.MONGODB_URI, opts)
+      .set('strictQuery', false)
+      .connect(process.env.MONGODB_URI as string, opts)
       .then((mongoose) => {
         console.log('Connected to database');
         return mongoose;
+      })
+      .catch((e) => {
+        console.log('Error connecting to database', e);
       });
   }
 
@@ -41,6 +41,13 @@ async function dbConnect() {
   }
 
   return cached.conn;
+}
+
+export async function dbDisconnect() {
+  if (cached.conn) {
+    await cached.conn.close();
+    cached.conn = null;
+  }
 }
 
 export default dbConnect;
