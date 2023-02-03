@@ -19,13 +19,26 @@ export const planHandler = async (
     // get plan by id
     case 'GET':
       try {
-        const plan = await Plan.findById(plan_id);
+        const plan = await Plan.findById(plan_id)
+          .populate('recipes')
+          .populate({
+            path: 'recipes',
+            populate: {
+              path: 'ingredients.ingredient',
+            },
+          })
+          .populate({
+            path: 'recipes',
+            populate: {
+              path: 'ingredients.unit',
+            },
+          });
         if (!plan) {
           return res
             .status(404)
             .json({ error: `Plan with id: ${plan_id} not found` });
         }
-        return res.status(200).json({ plan });
+        return res.status(200).json(plan);
       } catch (err: any) {
         return res.status(500).json({
           message: `Error retrieving plan with id: ${plan_id}.`,

@@ -20,9 +20,9 @@ export const tagHandler = async (req: NextApiRequest, res: NextApiResponse) => {
         if (!tag) {
           return res
             .status(400)
-            .json({ error: `Tag with id: ${tag_id}not found` });
+            .json({ error: `Tag with id: ${tag_id} not found` });
         }
-        return res.status(200).json({ tag });
+        return res.status(200).json(tag);
       } catch (err: any) {
         return res.status(500).json({
           message: `Error retrieving tag with id: ${tag_id}.`,
