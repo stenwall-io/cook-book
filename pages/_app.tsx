@@ -1,10 +1,8 @@
-// import '../styles/styles.scss';
-import { ReactNode, useEffect } from 'react';
+import { NextUIProvider } from '@nextui-org/react';
 import Head from 'next/head';
 import type { AppProps } from 'next/app';
-import { CssBaseline } from '@mui/material';
-import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 import theme from '@styles/theme';
+import globalStyles from '@styles/globalStyles';
 import { SWRConfig } from 'swr';
 
 const fetcher = (query: string) =>
@@ -14,14 +12,7 @@ const fetcher = (query: string) =>
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   // const getLayout = Component.getLayout || ((page: ReactNode) => page);
-
-  // useEffect(() => {
-  //   // remove the server-side injected CSS
-  //   const jssStyles = document.querySelector('#jss-server-side');
-  //   if (jssStyles) {
-  //     jssStyles?.parentElement?.removeChild(jssStyles);
-  //   }
-  // }, []);
+  globalStyles();
 
   return (
     <>
@@ -31,7 +22,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
-        <meta name="theme-color" content={theme.palette.primary.main} />
+        {/* <meta name="theme-color" content={theme.palette.primary.main} /> */}
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <SWRConfig
@@ -41,13 +32,10 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           fetcher,
         }}
       >
-        <StyledEngineProvider injectFirst>
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-            {/* {getLayout(<Component {...pageProps} />)} */}
-            <Component {...pageProps} />
-          </ThemeProvider>
-        </StyledEngineProvider>
+        <NextUIProvider theme={theme}>
+          {/* {getLayout(<Component {...pageProps} />)} */}
+          <Component {...pageProps} />
+        </NextUIProvider>
       </SWRConfig>
     </>
   );
