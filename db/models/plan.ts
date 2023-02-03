@@ -1,10 +1,10 @@
-import { Model, model, models, Schema, Types } from 'mongoose';
+import { Model, model, models, Schema, Types, PopulatedDoc } from 'mongoose';
 import { IRecipe } from '@models/index';
 
 export interface IPlan {
   _id: Types.ObjectId;
   name: string;
-  recipes: Array<IRecipe['_id']>;
+  recipes: Types.Array<PopulatedDoc<IRecipe['_id'] & IRecipe>>;
   createdAt: Date;
   updatedAt: Date;
 }

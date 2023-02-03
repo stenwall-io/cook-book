@@ -1,8 +1,8 @@
-import { Schema, Model, model, models } from 'mongoose';
+import { Schema, Model, model, models, Types } from 'mongoose';
 import { IUnit } from '@models/index';
 
 export interface ITag {
-  _id: Schema.Types.ObjectId;
+  _id: Types.ObjectId;
   name: string;
 }
 

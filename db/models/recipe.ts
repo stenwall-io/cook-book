@@ -1,4 +1,4 @@
-import { Schema, Model, model, models, Types } from 'mongoose';
+import { Schema, Model, model, models, Types, PopulatedDoc } from 'mongoose';
 import { IUnit, ISeason, ITag, IIngredient } from '@models/index';
 
 export interface IRecipe {
@@ -7,18 +7,18 @@ export interface IRecipe {
   description?: string;
   image_url?: string;
   num_portions: number;
-  seasons: Types.Array<ISeason['_id']>;
-  ingredients: Array<IRecipeIngredient>;
-  ingredientList: Array<string>;
-  steps: Array<IStepGroup>;
+  seasons: Types.Array<PopulatedDoc<ISeason['_id'] & ISeason>>;
+  ingredients: Types.Array<IRecipeIngredient>;
+  ingredientList: Types.Array<string>;
+  steps: Types.Array<IStepGroup>;
   tags: Types.Array<ITag['_id']>;
   createdAt: Date;
   updatedAt: Date;
 }
 
 interface IRecipeIngredient {
-  ingredient: IIngredient['_id'];
-  unit: IUnit['_id'];
+  ingredient: PopulatedDoc<IIngredient['_id'] & IIngredient>;
+  unit: PopulatedDoc<IUnit['_id'] & IUnit>;
   amount: number;
   soak: boolean;
   boil: boolean;

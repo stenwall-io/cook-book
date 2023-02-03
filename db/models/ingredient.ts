@@ -1,10 +1,10 @@
-import { Schema, Model, model, models, Types } from 'mongoose';
+import { Schema, Model, model, models, Types, PopulatedDoc } from 'mongoose';
 import { IUnit } from '@models/index';
 
 export interface IIngredient {
   _id: Types.ObjectId;
   name: string;
-  default_unit: IUnit['_id'];
+  default_unit: PopulatedDoc<IUnit['_id'] & IUnit>;
 }
 
 const IngredientSchema = new Schema<IIngredient>({
