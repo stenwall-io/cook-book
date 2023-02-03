@@ -32,13 +32,13 @@ export const ingredientHandler = async (
     //get all ingredients
     case 'GET':
       try {
-        const ingredients = await Ingredient.find({});
+        const ingredients = await Ingredient.find({}).select(['name']);
         if (!ingredients) {
           return res.status(404).send({
             message: 'No ingredients were found.',
           });
         }
-        return res.status(200).json({ ingredients });
+        return res.status(200).json(ingredients);
       } catch (err: any) {
         return res.status(500).json({
           message: 'Error retrieving ingredients',

@@ -19,13 +19,17 @@ export const recipeHandler = async (
     // get recipe by id
     case 'GET':
       try {
-        const recipe = await Recipe.findById(recipe_id);
+        const recipe = await Recipe.findById(recipe_id)
+          .populate('ingredients.ingredient')
+          .populate('ingredients.unit')
+          .populate('seasons')
+          .populate('tags');
         if (!recipe) {
           return res
             .status(404)
             .json({ error: `Recipe with id: ${recipe_id}not found` });
         }
-        return res.status(200).json({ recipe });
+        return res.status(200).json(recipe.toJSON({ virtuals: true }));
       } catch (err: any) {
         return res.status(500).json({
           message: `Error retrieving recipe with id: ${recipe_id}.`,

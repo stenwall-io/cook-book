@@ -38,8 +38,7 @@ export const recipeHandler = async (
             message: 'No recipes were found.',
           });
         }
-
-        return res.status(200).json({ recipes });
+        return res.status(200).json(recipes);
       } catch (err: any) {
         return res
           .status(500)

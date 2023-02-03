@@ -9,7 +9,7 @@ export const ingredientHandler = async (
   res: NextApiResponse
 ) => {
   const {
-    query: { id: ingredient_id },
+    query: { ingredient_id },
     method,
   } = req;
 
@@ -19,13 +19,15 @@ export const ingredientHandler = async (
     // get ingredient by id
     case 'GET':
       try {
-        const ingredient = await Ingredient.findById(ingredient_id);
+        const ingredient = await Ingredient.findById(ingredient_id).populate(
+          'default_unit'
+        );
         if (!ingredient) {
           return res
             .status(404)
             .json({ error: `Ingredient with id: ${ingredient_id} not found` });
         }
-        return res.status(200).json({ ingredient });
+        return res.status(200).json(ingredient);
       } catch (err: any) {
         return res.status(500).json({
           message: `Error retrieving ingredient with id: ${ingredient_id}.`,
