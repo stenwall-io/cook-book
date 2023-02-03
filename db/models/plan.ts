@@ -2,9 +2,9 @@ import { Model, model, models, Schema, Types } from 'mongoose';
 import { IRecipe } from '@models/index';
 
 export interface IPlan {
-  _id: Schema.Types.ObjectId;
+  _id: Types.ObjectId;
   name: string;
-  recipes: Array<Types.ObjectId>;
+  recipes: Array<IRecipe['_id']>;
   createdAt: Date;
   updatedAt: Date;
 }

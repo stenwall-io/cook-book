@@ -1,10 +1,10 @@
-import { Schema, Model, model, models } from 'mongoose';
+import { Schema, Model, model, models, Types } from 'mongoose';
 import { IUnit } from '@models/index';
 
 export interface IIngredient {
-  _id: Schema.Types.ObjectId;
+  _id: Types.ObjectId;
   name: string;
-  default_unit_id: IUnit['_id'];
+  default_unit: IUnit['_id'];
 }
 
 const IngredientSchema = new Schema<IIngredient>({
@@ -13,7 +13,7 @@ const IngredientSchema = new Schema<IIngredient>({
     required: true,
     trim: true,
   },
-  default_unit_id: {
+  default_unit: {
     type: Schema.Types.ObjectId,
     ref: 'Unit',
     required: true,
