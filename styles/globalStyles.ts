@@ -7,6 +7,12 @@ const globalStyles = globalCss({
   },
   h1: {
     letterSpacing: '$normal',
+    fontWeight: '$semibold',
+  },
+  h3: {
+    letterSpacing: '$normal',
+    fontWeight: '$medium',
+    lineHeight: '$xs',
   },
 });
 
