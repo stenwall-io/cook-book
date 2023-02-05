@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from 'next';
 import dbConnect from 'db/config/index';
 import models from '@models/index';
+import { getToken } from 'next-auth/jwt';
 
 const Recipe = models.Recipe;
 
@@ -8,6 +9,11 @@ export const recipeHandler = async (
   req: NextApiRequest,
   res: NextApiResponse
 ) => {
+  const token = await getToken({ req });
+  if ( token === null ) {
+    return res.status(401).json({ message: 'Unauthorized' });
+  }
+
   const { method } = req;
 
   await dbConnect();

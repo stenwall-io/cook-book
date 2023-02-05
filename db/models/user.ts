@@ -4,7 +4,7 @@ export interface IUser {
   _id: Schema.Types.ObjectId;
   username: string;
   password: string;
-  realName: string;
+  name: string;
 }
 
 const UserSchema = new Schema<IUser>({
@@ -18,11 +18,18 @@ const UserSchema = new Schema<IUser>({
     required: true,
     trim: true,
   },
-  realName: {
+  name: {
     type: String,
     required: true,
     trim: true,
   },
+  
+},{
+  toObject: {
+    transform: function (doc, ret) {
+      delete ret.password;
+    }
+  }
 });
 
 export default (models.User as Model<IUser>) ||
