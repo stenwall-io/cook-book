@@ -6,13 +6,17 @@ import { CssBaseline } from '@mui/material';
 import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 import theme from '@styles/theme';
 import { SWRConfig } from 'swr';
+import { SessionProvider } from 'next-auth/react';
 
 const fetcher = (query: string) =>
   fetch(query)
     .then((res) => res.json())
     .then((jsonData) => jsonData);
 
-const MyApp = ({ Component, pageProps }: AppProps) => {
+const MyApp = ({
+  Component,
+  pageProps: { session, ...pageProps },
+}: AppProps) => {
   // const getLayout = Component.getLayout || ((page: ReactNode) => page);
 
   // useEffect(() => {
@@ -45,7 +49,9 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           <ThemeProvider theme={theme}>
             <CssBaseline />
             {/* {getLayout(<Component {...pageProps} />)} */}
-            <Component {...pageProps} />
+            <SessionProvider session={session}>
+              <Component {...pageProps} />
+            </SessionProvider>
           </ThemeProvider>
         </StyledEngineProvider>
       </SWRConfig>

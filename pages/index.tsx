@@ -1,9 +1,14 @@
 import { IRecipe } from '@models/recipe';
 import useSWR from 'swr';
+import { useSession } from "next-auth/react"
+
+import LogOutButton from '@components/logoutbutton/logoutbutton';
+import { Session } from 'next-auth';
 
 export default function Index() {
   const { data, error, isLoading } = useSWR('/api/recipes');
-
+  const { data: session } = useSession()
+  
   const recipes = data;
 
   if (error) return <div>Failed to load</div>;
@@ -11,11 +16,13 @@ export default function Index() {
 
   return (
     <div>
+      Hej {session.user.name}
       <h1>Cook Book!</h1>
       {recipes &&
         recipes.map((recipe: IRecipe, i: number) => (
           <div key={i}>{recipe.name}</div>
         ))}
+        <LogOutButton />
     </div>
   );
 }
