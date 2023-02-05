@@ -20,7 +20,7 @@ export default function Index() {
       <h1>Cook Book!</h1>
       {recipes &&
         recipes.map((recipe: IRecipe, i: number) => (
-          <div key={i}>{recipe.name}</div>
+          <div key={i}>{recipe.title}</div>
         ))}
         <LogOutButton />
     </div>

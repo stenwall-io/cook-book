@@ -3,7 +3,7 @@ import { IUnit, ISeason, ITag, IIngredient } from '@models/index';
 
 export interface IRecipe {
   _id: Types.ObjectId;
-  name: string;
+  title: string;
   description?: string;
   image_url?: string;
   num_portions: number;
@@ -31,7 +31,7 @@ interface IStepGroup {
 
 const RecipeSchema = new Schema<IRecipe>(
   {
-    name: {
+    title: {
       type: String,
       required: true,
       trim: true,
