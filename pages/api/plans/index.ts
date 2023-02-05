@@ -38,7 +38,7 @@ export const planHandler = async (
             message: 'No plans were found.',
           });
         }
-        return res.status(200).json({ plans });
+        return res.status(200).json(plans);
       } catch (err: any) {
         return res
           .status(500)

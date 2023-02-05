@@ -1,10 +1,9 @@
-import { Schema, Model, model, models } from 'mongoose';
+import { Schema, Model, model, models, Types } from 'mongoose';
 import { IUnit } from '@models/index';
 
 export interface ITag {
-  _id: Schema.Types.ObjectId;
+  _id: Types.ObjectId;
   name: string;
-  default_unit_id: IUnit['_id'];
 }
 
 const TagSchema = new Schema<ITag>({
@@ -12,7 +11,7 @@ const TagSchema = new Schema<ITag>({
     type: String,
     required: true,
     trim: true,
-    lowercase: true
+    lowercase: true,
   },
 });
 

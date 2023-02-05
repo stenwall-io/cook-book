@@ -4,11 +4,10 @@ import useSWR from 'swr';
 export default function Index() {
   const { data, error, isLoading } = useSWR('/api/recipes');
 
+  const recipes = data;
+
   if (error) return <div>Failed to load</div>;
   if (isLoading) return <div>Loading...</div>;
-
-  const { recipes } = data;
-  console.log(recipes)
 
   return (
     <div>

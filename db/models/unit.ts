@@ -1,10 +1,10 @@
-import { Schema, Model, model, models } from 'mongoose';
+import { Schema, Model, model, models, Types } from 'mongoose';
 
 export interface IUnit {
-  _id: Schema.Types.ObjectId;
+  _id: Types.ObjectId;
   name: string;
-  plural: string;
-  shortname: string;
+  plural?: string;
+  shortname?: string;
 }
 
 const UnitSchema = new Schema<IUnit>({
