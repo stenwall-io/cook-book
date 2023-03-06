@@ -1,8 +1,6 @@
-import { config } from 'dotenv';
 import mongoose from 'mongoose';
-import models from '@models/index';
 
-config();
+mongoose.set('strictQuery', false);
 
 const options: object = {
   useNewUrlParser: true,

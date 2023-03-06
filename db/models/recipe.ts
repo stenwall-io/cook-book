@@ -1,22 +1,24 @@
-import { Schema, Model, model, models, Types } from 'mongoose';
+import { Schema, Model, model, models, Types, PopulatedDoc } from 'mongoose';
 import { IUnit, ISeason, ITag, IIngredient } from '@models/index';
 
 export interface IRecipe {
-  _id: Schema.Types.ObjectId;
-  name: string;
+  _id: Types.ObjectId;
+  title: string;
+  description?: string;
   image_url?: string;
   num_portions: number;
-  seasons: Types.Array<ISeason['_id']>;
-  ingredients: Array<IRecipeIngredient>;
-  steps: Array<IStepGroup>;
+  seasons: Types.Array<PopulatedDoc<ISeason['_id'] & ISeason>>;
+  ingredients: Types.Array<IRecipeIngredient>;
+  ingredientList: Types.Array<string>;
+  steps: Types.Array<IStepGroup>;
   tags: Types.Array<ITag['_id']>;
   createdAt: Date;
   updatedAt: Date;
 }
 
 interface IRecipeIngredient {
-  ingredient_id: IIngredient['_id'];
-  unit_id: IUnit['_id'];
+  ingredient: PopulatedDoc<IIngredient['_id'] & IIngredient>;
+  unit: PopulatedDoc<IUnit['_id'] & IUnit>;
   amount: number;
   soak: boolean;
   boil: boolean;
@@ -24,20 +26,18 @@ interface IRecipeIngredient {
 
 interface IStepGroup {
   title: string;
-  order: number;
-  steps: Array<IStep>;
-}
-
-interface IStep {
-  order: number;
-  text: string;
+  steps: Array<string>;
 }
 
 const RecipeSchema = new Schema<IRecipe>(
   {
-    name: {
+    title: {
       type: String,
       required: true,
+      trim: true,
+    },
+    description: {
+      type: String,
       trim: true,
     },
     image_url: String,
@@ -65,13 +65,7 @@ const RecipeSchema = new Schema<IRecipe>(
     steps: [
       {
         title: String,
-        order: Number,
-        steps: [
-          {
-            order: Number,
-            text: String,
-          },
-        ],
+        steps: [String],
       },
     ],
     tags: [
@@ -85,6 +79,14 @@ const RecipeSchema = new Schema<IRecipe>(
     timestamps: true,
   }
 );
+
+RecipeSchema.virtual('ingredientList').get(function (this: IRecipe) {
+  return this.ingredients.map((ingredient) => {
+    if (typeof ingredient.unit.shortname != undefined) {
+      return `${ingredient.amount} ${ingredient.unit.shortname} ${ingredient.ingredient.name}`;
+    }
+  });
+});
 
 export default (models.Recipe as Model<IRecipe>) ||
   model<IRecipe>('Recipe', RecipeSchema);

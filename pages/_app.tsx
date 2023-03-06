@@ -4,13 +4,17 @@ import theme from '@styles/theme';
 import GlobalStyle from '@styles/globalStyles';
 import { SWRConfig } from 'swr';
 import { ThemeProvider } from 'styled-components';
+import { SessionProvider } from 'next-auth/react';
 
 const fetcher = (query: string) =>
   fetch(query)
     .then((res) => res.json())
-    .then((json) => json);
+    .then((jsonData) => jsonData);
 
-const MyApp = ({ Component, pageProps }: AppProps) => {
+const MyApp = ({
+  Component,
+  pageProps: { session, ...pageProps },
+}: AppProps) => {
   // const getLayout = Component.getLayout || ((page: ReactNode) => page);
 
   return (

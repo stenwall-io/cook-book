@@ -1,10 +1,10 @@
-import { Schema, Model, model, models } from 'mongoose';
+import { Schema, Model, model, models, PopulatedDoc } from 'mongoose';
 import { IIngredient, IUnit } from './';
 
 export interface IUnitTransform {
-  ingredient_id: IIngredient['_id'];
-  unit_a_id: IUnit['_id'];
-  unit_b_id: IUnit['_id'];
+  ingredient_id: PopulatedDoc<IIngredient['_id'] & IIngredient>;
+  unit_a_id: PopulatedDoc<IUnit['_id'] & IUnit>;
+  unit_b_id: PopulatedDoc<IUnit['_id'] & IUnit>;
   factor: number;
 }
 

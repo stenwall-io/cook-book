@@ -1,7 +1,7 @@
-import { Schema, Model, model, models } from 'mongoose';
+import { Schema, Model, model, models, Types } from 'mongoose';
 
 export interface ISeason {
-  _id: Schema.Types.ObjectId;
+  _id: Types.ObjectId;
   name: string;
 }
 

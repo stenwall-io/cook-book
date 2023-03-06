@@ -5,6 +5,7 @@ import Tag, { ITag } from '@models/tag';
 import Season, { ISeason } from '@models/season';
 import UnitTransform, { IUnitTransform } from '@models/unit_transform';
 import Unit, { IUnit } from '@models/unit';
+import User, { IUser } from '@models/user';
 
 export default {
   Ingredient,
@@ -14,6 +15,7 @@ export default {
   Tag,
   UnitTransform,
   Unit,
+  User
 };
 
 export type {
@@ -24,4 +26,5 @@ export type {
   ITag,
   IUnitTransform,
   IUnit,
+  IUser
 };
