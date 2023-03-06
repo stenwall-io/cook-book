@@ -1,15 +1,12 @@
 import { IRecipe } from '@models/recipe';
 import useSWR from 'swr';
-import Link from 'next/link';
 import { MainLayout, RecipeCard } from '@components';
 
-export const Recipes = () => {
+export const Recept = () => {
   const { data: recipes, error, isLoading } = useSWR('/api/recipes');
 
   if (error) return <div>Failed to load</div>;
   if (isLoading) return <div>Loading...</div>;
-
-  // const { recipes } = data;
 
   return (
     <>
@@ -23,4 +20,4 @@ export const Recipes = () => {
   );
 };
 
-export default Recipes;
+export default Recept;

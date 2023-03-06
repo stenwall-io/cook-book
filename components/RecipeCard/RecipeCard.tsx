@@ -11,14 +11,16 @@ const RecipeCard = (props: Props) => {
   const { recipe } = props;
 
   const clickHandler = () => {
-    router.push('/recipes/[recipeId]', `/recipes/${recipe._id}`);
+    router.push('/recept/[recipeId]', `/recept/${recipe._id}`);
   };
 
   return (
-    <button onClick={clickHandler}>
-      <h2>{recipe.title}</h2>
-      {recipe.description && <p>{recipe.description}</p>}
-    </button>
+    <a onClick={clickHandler}>
+      <div>
+        <h2>{recipe.title}</h2>
+        {recipe.description && <p>{recipe.description}</p>}
+      </div>
+    </a>
   );
 };
 

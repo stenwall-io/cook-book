@@ -47,8 +47,10 @@ export default createGlobalStyle`
     vertical-align: baseline;
   }
 
-  a {
+  a,
+  button {
     all: unset;
+    cursor: pointer;
   }
 
   h1 {
