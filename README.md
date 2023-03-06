@@ -68,15 +68,12 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
-
 
 
 <!-- ABOUT THE PROJECT -->
@@ -87,16 +84,15 @@
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
 ### Built With
 
 <!-- * [![Next][Next.js]][Next-url] -->
-* [Next.js][Next-url]
+* [Next.js][next-url]
 * [mongoose][mongoose-url]
+* [NextAuth.js][nextauth-url]
 * [styled-components][styledcomponents-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- GETTING STARTED -->
@@ -121,7 +117,6 @@ Run develop environment
 ```bash
 yarn dev
 ```
-
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -168,29 +163,6 @@ yarn dev
 | GET | `/tags/[tagId]` | get given tag |
 | PUT | `/tags/[tagId]` | update given tag |
 | DELETE | `/tags/[tagId]` | delete given tag |
-
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
-<!-- ROADMAP -->
-## Roadmap
-
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
-
-See the [open issues](https://github.com/stenwall-io/cook-book/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 
 <!-- CONTRIBUTING -->
@@ -256,5 +228,6 @@ Project Link: [https://github.com/stenwall-io/cook-book](https://github.com/sten
 [linkedin-url]: https://linkedin.com/in/linkedin_username
 [product-screenshot]: assets/screenshot.png
 [next-url]: https://nextjs.org/
+[nextauth-url]: https://next-auth.js.org/
 [mongoose-url]: https://mongoosejs.com/
 [styledcomponents-url]: https://styled-components.com/
