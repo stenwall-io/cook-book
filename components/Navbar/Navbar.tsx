@@ -19,7 +19,7 @@ const Navbar = () => {
 
   return (
     <StyledNavbar>
-      <Link href="/dop">
+      <Link href="/">
         <StyledTitle>Cook Book</StyledTitle>
       </Link>
       <div ref={node}>
