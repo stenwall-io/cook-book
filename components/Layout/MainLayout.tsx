@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { Navbar } from '@components';
 
 interface Props {
   children: ReactNode;
@@ -7,6 +8,7 @@ interface Props {
 const MainLayout = ({ children }: Props) => {
   return (
     <>
+      <Navbar />
       <main>{children}</main>
     </>
   );

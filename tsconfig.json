@@ -18,7 +18,7 @@
     "incremental": true,
     "paths": {
       "@models/*": ["db/models/*"],
-      "@components/*": ["components/*"],
+      "@components": ["components/index"],
       "@styles/*": ["styles/*"],
       "@services/*": ["db/services/*"]
     }

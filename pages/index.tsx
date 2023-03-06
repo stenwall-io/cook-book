@@ -1,4 +1,4 @@
-import MainLayout from '@components/Layout/MainLayout';
+import { MainLayout } from '@components';
 import Link from 'next/link';
 
 export const Index = () => {
