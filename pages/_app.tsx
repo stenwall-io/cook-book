@@ -1,11 +1,9 @@
-// import '../styles/styles.scss';
-import { ReactNode, useEffect } from 'react';
 import Head from 'next/head';
 import type { AppProps } from 'next/app';
-import { CssBaseline } from '@mui/material';
-import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 import theme from '@styles/theme';
+import GlobalStyle from '@styles/globalStyles';
 import { SWRConfig } from 'swr';
+import { ThemeProvider } from 'styled-components';
 import { SessionProvider } from 'next-auth/react';
 
 const fetcher = (query: string) =>
@@ -19,14 +17,6 @@ const MyApp = ({
 }: AppProps) => {
   // const getLayout = Component.getLayout || ((page: ReactNode) => page);
 
-  // useEffect(() => {
-  //   // remove the server-side injected CSS
-  //   const jssStyles = document.querySelector('#jss-server-side');
-  //   if (jssStyles) {
-  //     jssStyles?.parentElement?.removeChild(jssStyles);
-  //   }
-  // }, []);
-
   return (
     <>
       <Head>
@@ -35,7 +25,6 @@ const MyApp = ({
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
-        <meta name="theme-color" content={theme.palette.primary.main} />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <SWRConfig
@@ -45,15 +34,12 @@ const MyApp = ({
           fetcher,
         }}
       >
-        <StyledEngineProvider injectFirst>
-          <ThemeProvider theme={theme}>
-            <CssBaseline />
-            {/* {getLayout(<Component {...pageProps} />)} */}
-            <SessionProvider session={session}>
-              <Component {...pageProps} />
-            </SessionProvider>
-          </ThemeProvider>
-        </StyledEngineProvider>
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
+          <SessionProvider session={session}>
+            <Component {...pageProps} />
+          </SessionProvider>
+        </ThemeProvider>
       </SWRConfig>
     </>
   );
