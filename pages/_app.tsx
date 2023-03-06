@@ -1,9 +1,9 @@
-import { NextUIProvider } from '@nextui-org/react';
 import Head from 'next/head';
 import type { AppProps } from 'next/app';
 import theme from '@styles/theme';
-import globalStyles from '@styles/globalStyles';
+import GlobalStyle from '@styles/globalStyles';
 import { SWRConfig } from 'swr';
+import { ThemeProvider } from 'styled-components';
 
 const fetcher = (query: string) =>
   fetch(query)
@@ -12,7 +12,6 @@ const fetcher = (query: string) =>
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
   // const getLayout = Component.getLayout || ((page: ReactNode) => page);
-  globalStyles();
 
   return (
     <>
@@ -22,7 +21,6 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           name="viewport"
           content="minimum-scale=1, initial-scale=1, width=device-width"
         />
-        {/* <meta name="theme-color" content={theme.palette.primary.main} /> */}
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <SWRConfig
@@ -32,10 +30,10 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           fetcher,
         }}
       >
-        <NextUIProvider theme={theme}>
-          {/* {getLayout(<Component {...pageProps} />)} */}
+        <ThemeProvider theme={theme}>
+          <GlobalStyle />
           <Component {...pageProps} />
-        </NextUIProvider>
+        </ThemeProvider>
       </SWRConfig>
     </>
   );

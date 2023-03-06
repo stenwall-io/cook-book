@@ -6,7 +6,6 @@ import Document, {
   Main,
   NextScript,
 } from 'next/document';
-import { CssBaseline } from '@nextui-org/react';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -27,7 +26,6 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap"
             rel="stylesheet"
           />
-          {CssBaseline.flush()}
         </Head>
         <body>
           <Main />
