@@ -93,7 +93,7 @@
 <!-- * [![Next][Next.js]][Next-url] -->
 * [Next.js][Next-url]
 * [mongoose][mongoose-url]
-* [Material UI][materialui-url]
+* [styled-components][styledcomponents-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -257,4 +257,4 @@ Project Link: [https://github.com/stenwall-io/cook-book](https://github.com/sten
 [product-screenshot]: assets/screenshot.png
 [next-url]: https://nextjs.org/
 [mongoose-url]: https://mongoosejs.com/
-[materialui-url]: https://mui.com/
+[styledcomponents-url]: https://styled-components.com/
