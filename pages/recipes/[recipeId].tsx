@@ -1,8 +1,6 @@
-import { IRecipe } from '@models/recipe';
-import { Grid, Text } from '@nextui-org/react';
-import RecipeCard from '@components/card/RecipeCard';
 import useSWR from 'swr';
 import { useRouter } from 'next/router';
+import { MainLayout } from '@components';
 
 export const Recipe = () => {
   const router = useRouter();
@@ -13,10 +11,13 @@ export const Recipe = () => {
   if (isLoading) return <div>Loading...</div>;
   const { recipe } = data;
 
+  // if (recipe)
   return (
     <>
-      <Text h1>Cook Book!</Text>
-      <Text>{recipe.name}</Text>
+      <MainLayout>
+        <h1>{recipe.name}</h1>
+        <p>{recipe.description}</p>
+      </MainLayout>
     </>
   );
 };
