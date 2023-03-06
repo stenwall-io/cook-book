@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { ReactNode } from 'react';
-import { StyledLink } from './MenuLink.styled';
+import { StyledLink } from './Menu.styled';
 
 interface Props {
   href: string;

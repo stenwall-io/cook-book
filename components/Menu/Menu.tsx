@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { StyledList } from './Menu.styled';
-import MenuLink from '../MenuLink/MenuLink';
+import { MenuLink, LogoutButton } from '@components';
 import { useRouter } from 'next/router';
 import { ReactNode, useState } from 'react';
 
@@ -30,6 +30,9 @@ const Menu = ({ open, desktop, children }: Props) => {
           >
             Recept
           </MenuLink>
+        </li>
+        <li>
+          <LogoutButton>Logga ut</LogoutButton>
         </li>
       </StyledList>
     </nav>

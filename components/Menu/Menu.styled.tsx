@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 
-interface Props {
+interface ListProps {
   readonly open: boolean;
   readonly desktop: boolean;
 }
 
-export const StyledList = styled.ul<Props>`
+export const StyledList = styled.ul<ListProps>`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -37,4 +37,37 @@ export const StyledList = styled.ul<Props>`
     desktop ? 'unset' : 'transform 0.3s ease-in-out, width 0s 0.3s'};
   transform: ${({ desktop, open }) =>
     desktop ? 'unset' : open ? 'translateX(0)' : 'translateX(100%)'};
+`;
+
+interface LinkProps {
+  readonly active: boolean;
+}
+
+export const StyledLink = styled.a<LinkProps>`
+  position: relative;
+  padding: 0.5rem 0;
+  cursor: pointer;
+
+  &:focus {
+    outline: auto;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: ${({ active }) => (active ? 'scaleX(1)' : 'scaleX(0)')};
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    background-color: ${({ theme }) => theme.colors.foreground};
+    transform-origin: bottom left;
+    transition: ${({ active }) =>
+      active ? 'none' : 'transform 0.3s ease-out'};
+  }
+
+  &:hover::after {
+    /* transform: ${({ active }) => (active ? 'none' : 'scaleX(1)')}; */
+    transform: scaleX(1);
+  }
 `;
