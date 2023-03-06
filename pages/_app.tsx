@@ -36,7 +36,9 @@ const MyApp = ({
       >
         <ThemeProvider theme={theme}>
           <GlobalStyle />
-          <Component {...pageProps} />
+          <SessionProvider session={session}>
+            <Component {...pageProps} />
+          </SessionProvider>
         </ThemeProvider>
       </SWRConfig>
     </>

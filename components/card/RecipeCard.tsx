@@ -15,9 +15,10 @@ const RecipeCard = (props: Props) => {
   };
 
   return (
-    <div>
-      <h2>{recipe.name}</h2>
-    </div>
+    <button onClick={clickHandler}>
+      <h2>{recipe.title}</h2>
+      {recipe.description && <p>{recipe.description}</p>}
+    </button>
   );
 };
 
