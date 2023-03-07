@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import type { AppProps } from 'next/app';
+import { Rubik } from 'next/font/google';
 import theme from '@styles/theme';
 import GlobalStyle from '@styles/globalStyles';
 import { SWRConfig } from 'swr';
@@ -10,6 +11,12 @@ const fetcher = (query: string) =>
   fetch(query)
     .then((res) => res.json())
     .then((jsonData) => jsonData);
+
+const rubik = Rubik({
+  weight: ['300', '400', '500', '600', '700'],
+  style: ['normal', 'italic'],
+  subsets: ['latin'],
+});
 
 const MyApp = ({
   Component,
@@ -36,6 +43,12 @@ const MyApp = ({
       >
         <ThemeProvider theme={theme}>
           <GlobalStyle />
+          <style jsx global>{`
+            html,
+            * {
+              font-family: ${rubik.style.fontFamily};
+            }
+          `}</style>
           <SessionProvider session={session}>
             <Component {...pageProps} />
           </SessionProvider>

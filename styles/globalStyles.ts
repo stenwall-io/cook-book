@@ -26,6 +26,27 @@ export default createGlobalStyle`
     font-size: ${({ theme }) => theme.fontSizes.base};
     color: ${({ theme }) => theme.colors.foreground};
     line-height: ${({ theme }) => theme.lineHeights.base};
+    height: 100%;
+    min-height: 100vh;
+  }
+
+  main {
+    padding: 2rem;
+    width: 100%;
+    margin: 0 auto;
+    height: 100%;
+
+    @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
+      width: 1100px;
+    }
+
+    @media (min-width: ${({ theme }) => theme.breakpoints.lg}) {
+      width: 1300px;
+    }
+
+    @media (min-width: ${({ theme }) => theme.breakpoints.xl}) {
+      width: 1600px;
+    }
   }
 
   ul {

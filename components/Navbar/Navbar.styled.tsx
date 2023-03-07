@@ -4,7 +4,7 @@ export const StyledNavbar = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2rem;
+  padding: 1rem 2rem;
   max-width: 1600px;
   margin: 0 auto;
   margin-bottom: 4rem;
@@ -12,7 +12,7 @@ export const StyledNavbar = styled.div`
 `;
 
 export const StyledTitle = styled.h1`
-  font-size: 1rem;
-  font-weight: normal;
+  font-size: ${({ theme }) => theme.fontSizes.xl2};
+  font-weight: ${({ theme }) => theme.fontWeights.normal};
   padding-right: 3rem;
 `;
