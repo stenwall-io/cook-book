@@ -35,6 +35,7 @@ export default createGlobalStyle`
     width: 100%;
     margin: 0 auto;
     height: 100%;
+    margin-top: 5rem;
 
     @media (min-width: ${({ theme }) => theme.breakpoints.md}) {
       width: 1100px;
