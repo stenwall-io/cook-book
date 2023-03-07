@@ -7,8 +7,8 @@ interface ListProps {
 
 export const StyledList = styled.ul<ListProps>`
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  /* flex-direction: column; */
+  align-items: ${({ desktop }) => (desktop ? 'center' : 'flex-start')};
   gap: 2rem;
   background: ${({ theme }) => theme.colors.primaryLight};
   height: 100vh;
@@ -47,6 +47,10 @@ export const StyledLink = styled.a<LinkProps>`
   position: relative;
   padding: 0.5rem 0;
   cursor: pointer;
+  line-height: ${({ theme }) => theme.lineHeights.xs};
+  text-transform: uppercase;
+  font-size: ${({ theme }) => theme.fontSizes.sm};
+  font-weight: ${({ theme }) => theme.fontWeights.normal};
 
   &:focus {
     outline: auto;
@@ -67,7 +71,6 @@ export const StyledLink = styled.a<LinkProps>`
   }
 
   &:hover::after {
-    /* transform: ${({ active }) => (active ? 'none' : 'scaleX(1)')}; */
     transform: scaleX(1);
   }
 `;

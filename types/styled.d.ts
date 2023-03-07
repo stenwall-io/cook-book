@@ -118,6 +118,7 @@ declare module 'styled-components' {
       md: string;
       lg: string;
       xl: string;
+      xl2: string;
     };
     shadows: {
       xs: string;

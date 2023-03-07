@@ -1,6 +1,6 @@
 import { IRecipe } from '@models/recipe';
 import useSWR from 'swr';
-import { MainLayout, RecipeCard } from '@components';
+import { CardGrid, MainLayout, RecipeCard } from '@components';
 
 export const Recept = () => {
   const { data: recipes, error, isLoading } = useSWR('/api/recipes');
@@ -11,10 +11,12 @@ export const Recept = () => {
   return (
     <>
       <MainLayout>
-        {recipes &&
-          recipes.map((recipe: IRecipe, i: number) => (
-            <RecipeCard recipe={recipe} key={i} />
-          ))}
+        <CardGrid>
+          {recipes &&
+            recipes.map((recipe: IRecipe, i: number) => (
+              <RecipeCard recipe={recipe} key={i} />
+            ))}
+        </CardGrid>
       </MainLayout>
     </>
   );

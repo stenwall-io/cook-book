@@ -19,8 +19,7 @@ $success_main: #abd45f;
 $error_main: #ba1a1a;
 
 // TYPOGRAPHY
-$typography_font-family: 'Rubik', Roboto, sans-serif, 'Apple Color Emoji',
-  'Segoe UI Emoji', 'Segoe UI Symbol';
+$typography_font-family: 'Rubik', Ro$boto, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
 @mixin h1 {
   font-weight: 700;
   font-size: 3.75rem;
@@ -63,3 +62,79 @@ $typography_font-family: 'Rubik', Roboto, sans-serif, 'Apple Color Emoji',
   text-transform: uppercase;
   letter-spacing: 0.03em;
 }
+
+// COLORS
+
+$mauve100: #F9F1E5;
+  $mauve200: #F3E2CC;
+  $mauve300: #DCC1A7;
+  $mauve400: #BA9A82;
+  $mauve500: #8C6954;
+  $mauve600: #784F3D;
+  $mauve700: #64392A;
+  $mauve800: #51251A;
+  $mauve900: #431610;
+  $melon100: #FEF6F1;
+  $melon200: #FDECE3;
+  $melon300: #FBDDD3;
+  $melon400: #F7CFC6;
+  $melon500: #F2B9B3;
+  $melon600: #D08382;
+  $melon700: #AE5A5F;
+  $melon800: #8C3945;
+  $melon900: #742235;
+  $tickleMePink100: #FFE9E6;
+  $tickleMePink200: #FFCECD;
+  $tickleMePink300: #FFB3B9;
+  $tickleMePink400: #FFA1B0;
+  $tickleMePink500: #FF82A3;
+  $tickleMePink600: #DB5F8B;
+  $tickleMePink700: #B74177;
+  $tickleMePink800: #932964;
+  $tickleMePink900: #7A1858;
+  $pastelOrange100: #FFF7DA;
+  $pastelOrange200: #FFECB5;
+  $pastelOrange300: #FFDF90;
+  $pastelOrange400: #FFD375;
+  $pastelOrange500: #FFBE47;
+  $pastelOrange600: #DB9A33;
+  $pastelOrange700: #B77823;
+  $pastelOrange800: #935A16;
+  $pastelOrange900: #7A440D;
+  $mantis100: #EFFCDC;
+  $mantis200: #DBFABB;
+  $mantis300: #BEF195;
+  $mantis400: #A1E377;
+  $mantis500: #77D14D;
+  $mantis600: #57B338;
+  $mantis700: #3B9626;
+  $mantis800: #247918;
+  $mantis900: #13640E;
+  $auburn100: #F9E2D3;
+  $auburn200: #F3C0AA;
+  $auburn300: #DC8F79;
+  $auburn400: #BA6051;
+  $auburn500: #8D2923;
+  $auburn600: #79191C;
+  $auburn700: #65111A;
+  $auburn800: #510B18;
+  $auburn900: #430617;
+  $vanilla100: #FDF9F4;
+  $vanilla200: #FBF3EA;
+  $vanilla300: #F3E6DA;
+  $vanilla400: #E8D6CA;
+  $vanilla500: #D9C1B4;
+  $vanilla600: #BA9383;
+  $vanilla700: #9C695A;
+  $vanilla800: #7D4439;
+  $vanilla900: #682922;
+  $gray50: #F1F3F5;
+  $gray100: #ECEEF0;
+  $gray200: #E6E8EB;
+  $gray300: #DFE3E6;
+  $gray400: #D7DBDF;
+  $gray500: #C1C8CD;
+  $gray600: #889096;
+  $gray700: #7E868C;
+  $gray800: #687076;
+  $gray900: #11181C;
