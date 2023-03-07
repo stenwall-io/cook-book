@@ -11,6 +11,8 @@ export const StyledNavbar = styled.div`
   max-width: 1600px;
   margin: 0 auto;
   border-bottom: 1px solid ${({ theme }) => theme.colors.foreground};
+  z-index: 1000;
+  background-color: ${({ theme }) => theme.colors.background};
 `;
 
 export const StyledTitle = styled.h1`

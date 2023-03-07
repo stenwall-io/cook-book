@@ -7,13 +7,21 @@ export default createGlobalStyle`
     box-sizing: border-box;
   }
 
-  html,
-  body {
+  * {
     margin: 0;
-    padding: 0;
-    scroll-behavior: smooth;
+    line-height: calc(1em + 0.5rem);
+  }
+
+  html,
+  body,
+  #__next {
+    height: 100%;
     width: 100%;
     overflow-x: hidden;
+  }
+
+  #__next {
+    isolation: isolate;
   }
 
   html {
@@ -25,9 +33,23 @@ export default createGlobalStyle`
     letter-spacing: ${({ theme }) => theme.letterSpacings.normal};
     font-size: ${({ theme }) => theme.fontSizes.base};
     color: ${({ theme }) => theme.colors.foreground};
-    line-height: ${({ theme }) => theme.lineHeights.base};
-    height: 100%;
-    min-height: 100vh;
+    padding: 0;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  input, button, textarea, select {
+    font: inherit;
+  }
+
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+    hyphens: auto;
   }
 
   main {

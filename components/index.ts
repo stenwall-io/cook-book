@@ -1,4 +1,5 @@
 export { default as Burger } from './Burger';
+export { default as CardGrid } from './CardGrid';
 export { default as MainLayout } from './Layout';
 export {
   default as Menu,

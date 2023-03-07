@@ -28,7 +28,7 @@ export const recipeHandler = apiMiddleware(
       // get all recipes
       case 'GET':
         try {
-          const recipes = await Recipe.find({}).select(['title', 'image_url']);
+          const recipes = await Recipe.find({}).select(['title', 'image_url', 'description']);
           if (!recipes) {
             return res.status(404).send({
               message: 'No recipes were found.',
